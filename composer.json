@@ -1,0 +1,18 @@
+{
+    "name": "bailangzhan/yii2-webuploader",
+    "description": "yii2-webuploader组件",
+    "keywords": ["yii2", "webuploader"],
+    "type": "yii2-extension",
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/bailangzhan/yii2-webuploader/issues",
+        "source": "https://github.com/bailangzhan/yii2-webuploader",
+        "homepage": "http://www.manks.top/"
+    },
+    "require": {
+        "yiisoft/yii2": ">=2.0.4"
+    },
+    "autoload": {
+        "psr-4": { "manks\\": "" }
+    }
+}
