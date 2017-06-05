@@ -1,0 +1,6 @@
+.cus-size { width: 650px; height: 650px; }
+.multi-img-details{margin: .5em 0; padding: 0; }
+.multi-img-details .multi-item {max-height: 100px; max-width: 100px; position: relative; float: left; margin-right: 18px; margin-bottom: .5em;}
+.multi-img-details .multi-item em {position: absolute; top: 0; right: -14px; }
+.cus-img {  width: 100px;height: 100px;  }
+.delImage {position:absolute; top: 0px; right: -14px;}
