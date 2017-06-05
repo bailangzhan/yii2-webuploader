@@ -79,4 +79,4 @@ controller的地址可以在params.php或者params-local.php中配置 `Yii::$app
 
 ## 许可
 
-**yii2-widget-fileinput** is released under the MIT License. See the bundled `LICENSE.md` for details.
+**yii2-webuploader** is released under the MIT License. See the bundled `LICENSE.md` for details.
