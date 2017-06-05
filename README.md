@@ -25,15 +25,15 @@ params.php或者params-local.php内增加webuploader配置
 	// 基本配置
 	'baseConfig' => [
 		'defaultImage' => 'http://img1.imgtn.bdimg.com/it/u=2056478505,162569476&fm=26&gp=0.jpg',
-        'disableGlobalDnd' => true,
-        'accept' => [
-            'title' => 'Images',
-            'extensions' => 'gif,jpg,jpeg,bmp,png',
-            'mimeTypes' => 'image/*',
-        ],
-        'pick' => [
-            'multiple' => false,
-        ],
+		'disableGlobalDnd' => true,
+		'accept' => [
+			'title' => 'Images',
+			'extensions' => 'gif,jpg,jpeg,bmp,png',
+			'mimeTypes' => 'image/*',
+		],
+		'pick' => [
+			'multiple' => false,
+		],
 	],
 ],
 ```
