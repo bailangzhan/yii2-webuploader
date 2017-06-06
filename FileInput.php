@@ -178,8 +178,8 @@ JS;
     {
         $src = Yii::$app->params['webuploader']['baseConfig']['defaultImage'];
         $eles = [];
-        if ($model->$attribute) {
-            $src = Yii::$app->params['domain'] . $model->$attribute;
+        if (($value = $model->$attribute)) {
+            $src = $this->_validateUrl($value) ? $value : Yii::$app->params['domain'] . $value;
         }
         $eles[] = Html::img($src, ['class' => 'img-responsive img-thumbnail cus-img']);
         $eles[] = Html::tag('em', 'x', ['class' => 'close delImage', 'title' => '删除这张图片']);
@@ -201,7 +201,7 @@ JS;
             is_string($srcTmp) && $srcTmp = explode(Yii::$app->params['webuploader']['delimiter'], $srcTmp);
             $inputName = Html::getInputName($model, $attribute);
             foreach ($srcTmp as $k => $v) {
-                $dv = Yii::$app->params['domain'] . $v;
+                $dv = $this->_validateUrl($v) ? $v : Yii::$app->params['domain'] . $v;
                 $src = $v ? $dv : Yii::$app->params['webuploader']['baseConfig']['defaultImage'];
                 $eles = [];
                 $eles[] = Html::img($src, ['class' => 'img-responsive img-thumbnail cus-img']);
@@ -226,5 +226,19 @@ JS;
         ]);
 
         Modal::end();
+    }
+
+    /**
+     * validate `$value` is url
+     */
+    private function _validateUrl ($value)
+    {
+        $pattern = '/^{schemes}:\/\/(([A-Z0-9][A-Z0-9_-]*)(\.[A-Z0-9][A-Z0-9_-]*)+)(?::\d{1,5})?(?:$|[?\/#])/i';
+        $validSchemes = ['http', 'https'];
+        $pattern = str_replace('{schemes}', '(' . implode('|', $validSchemes) . ')', $pattern);
+        if (!preg_match($pattern, $value)) {
+            return false;
+        }
+        return true;
     }
 }
