@@ -435,7 +435,7 @@ jQuery(function() {
         $('.' + config['modal_id']).on('click', function () {
             chooseObject = $(this);
             _modal.modal('show');
-            $('.modal-body').html('');
+            _modal.find('.modal-body').html('');
             _modal.find('.modal-body').html(buildModalBody());
         });
 

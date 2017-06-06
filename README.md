@@ -13,13 +13,13 @@ $ php composer.phar require bailangzhan/yii2-webuploader dev-master
 ```
 
 ## 使用
-params.php或者params-local.php内增加webuploader配置
+params.php或者params-local.php内增加webuploader和domain配置项
 ```php
+// 图片服务器的域名设置，拼接保存在数据库中的相对地址，可通过web进行展示
+'domain' => 'http://blog.m/',
 'webuploader' => [
 	// 后端处理图片的地址，value 是相对的地址
 	'uploadUrl' => 'blog/upload',
-	// 图片服务器的域名设置，拼接保存在数据库中的相对地址，可通过web进行展示
-	'domain' => 'http://blog.m/',
 	// 多文件分隔符
 	'delimiter' => ',',
 	// 基本配置
@@ -75,7 +75,8 @@ controller的地址可以在params.php或者params-local.php中配置 `Yii::$app
 ```
 
 ## 注意
-如果是修改的多图片操作，务必保证 $model->file = 'src1,src2,src3,...'; 或者 $model->file = ['src1', 'src2'. 'src3', ...];
+1、如果是修改的多图片操作，务必保证 $model->file = 'src1,src2,src3,...'; 或者 $model->file = ['src1', 'src2'. 'src3', ...];
+2、暂时不支持modal上操作
 
 ## 许可
 
