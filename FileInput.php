@@ -6,7 +6,6 @@ use Yii;
 use yii\widgets\InputWidget;
 use yii\helpers\Html;
 use yii\base\InvalidConfigException;
-use yii\bootstrap\Modal;
 use yii\helpers\Url;
 use yii\helpers\Json;
 
@@ -33,8 +32,6 @@ class FileInput extends InputWidget
         if ($this->hasModel()) {
             $model = $this->model;
             $attribute = $this->attribute;
-
-            $this->renderModal();
 
             // 单图
             if (empty($this->_config['pick']['multiple'])) {
@@ -212,20 +209,6 @@ JS;
         } 
 
         return Html::tag('div', implode("\n", $items), ['class' => 'input-group multi-img-details']);
-    }
-
-    /**
-     * render modal
-     */
-    public function renderModal ()
-    {
-        Modal::begin([
-            'id' => $this->_hashVar,
-            'header' => '<h4 class="modal-title">上传图片</h4>',
-            'size' => 'cus-size',
-        ]);
-
-        Modal::end();
     }
 
     /**

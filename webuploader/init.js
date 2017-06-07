@@ -1,8 +1,10 @@
 jQuery(function() {
     var $ = jQuery;
     $.fn.webupload_fileinput = function (config) {
+        $('body').append(renderModal());
         var _modal = $('#' + config['modal_id']),
             chooseObject; // 点击选择图片的按钮
+        
         _modal.on("shown.bs.modal", init);
 
         function init () {
@@ -431,6 +433,25 @@ jQuery(function() {
                     '</div>';
         }
 
+        function renderModal () {
+            var modal_id = config['modal_id'];
+            if ($('#' + modal_id).length == 0) {
+                return '<div id="' + config['modal_id'] + '" class="fade modal modal-c" role="dialog" tabindex="-1">' +
+                        '<div class="modal-dialog cus-size">' +
+                            '<div class="modal-content">' +
+                                '<div class="modal-header">' +
+                                    '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>' +
+                                    '<h4 class="modal-title">上传图片</h4>' +
+                                '</div>' +
+                                '<div class="modal-body">' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>';
+            } else {
+                return false;
+            }
+        }
         // =====================================================================================
         $('.' + config['modal_id']).on('click', function () {
             chooseObject = $(this);
@@ -438,7 +459,6 @@ jQuery(function() {
             _modal.find('.modal-body').html('');
             _modal.find('.modal-body').html(buildModalBody());
         });
-
         $('.delImage').on('click', function () {
             var _this = $(this);
             _this.prev().attr("src", config.defaultImage);
@@ -446,6 +466,13 @@ jQuery(function() {
         });
         $(document).on('click', '.delMultiImage', function () {
             $(this).parent().remove();
+        });
+        // 解决多modal下滚动以及filePicker失效问题
+        $(document).on('hidden.bs.modal', '.modal', function () {
+            if($('.modal:visible').length) {
+                $(document.body).addClass('modal-open');
+                $('.modal-c').find('.modal-body').html('');
+            }
         });
     };
 });
