@@ -3,6 +3,9 @@
 
 此扩展集成webuploader图片上传插件，旨在更好的处理 Yii2 framework 图片上传的前端问题，目前支持多图多字段多modal的混合上传。
 
+## Demo 演示
+![image](https://github.com/bailangzhan/demo/blob/master/images/yii2-webuploader.gif)
+
 ## 安装
 
 
