@@ -1,7 +1,7 @@
 # yii2-webuploader
 ==========================
 
-此扩展集成webuploader图片上传插件，旨在更好的处理 Yii2 framework 图片上传的前端问题，目前支持多图多字段的混合上传。
+此扩展集成webuploader图片上传插件，旨在更好的处理 Yii2 framework 图片上传的前端问题，目前支持多图多字段多modal的混合上传。
 
 ## 安装
 
@@ -75,8 +75,7 @@ controller的地址可以在params.php或者params-local.php中配置 `Yii::$app
 ```
 
 ## 注意
-1、如果是修改的多图片操作，务必保证 $model->file = 'src1,src2,src3,...'; 或者 $model->file = ['src1', 'src2'. 'src3', ...];
-2、暂时不支持modal上操作
+如果是修改的多图片操作，务必保证 $model->file = 'src1,src2,src3,...'; 或者 $model->file = ['src1', 'src2'. 'src3', ...];
 
 ## 许可
 
