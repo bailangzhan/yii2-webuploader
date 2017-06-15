@@ -471,8 +471,8 @@ jQuery(function() {
         $(document).on('hidden.bs.modal', '.modal', function () {
             if($('.modal:visible').length) {
                 $(document.body).addClass('modal-open');
-                $('.modal-c').find('.modal-body').html('');
             }
+            $('.modal-c').find('.modal-body').html('');
         });
     };
 });
