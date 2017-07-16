@@ -46,14 +46,23 @@ params.php或者params-local.php内增加webuploader和domain配置项
 单图
 ```php
 <?php 
-	echo $form->field($model, 'file')->widget('manks\FileInput', [
-	]); 
+// ActiveForm
+echo $form->field($model, 'file')->widget('manks\FileInput', [
+]); 
+
+// 非 ActiveForm
+echo '<label class="control-label">图片</label>';
+echo \manks\FileInput::widget([
+    'model' => $model,
+    'attribute' => 'file',
+]);
 ?>
 ```
 
 多图
 ```php
 <?php 
+// ActiveForm
 echo $form->field($model, 'file2')->widget('manks\FileInput', [
 	'clientOptions' => [
 		'pick' => [
@@ -65,6 +74,18 @@ echo $form->field($model, 'file2')->widget('manks\FileInput', [
 		// ],
 	],
 ]); ?>
+
+// 非ActiveForm
+echo '<label class="control-label">图片</label>';
+echo \manks\FileInput::widget([
+	'model' => $model,
+	'attribute' => 'file',
+	'clientOptions' => [
+		'pick' => [
+			'multiple' => true,
+		],
+	]
+]); 
 ```
 
 控制器
