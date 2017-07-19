@@ -53,6 +53,8 @@ jQuery(function() {
                 alert( 'Web Uploader 不支持您的浏览器！如果你使用的是IE浏览器，请尝试升级 flash 播放器');
                 throw new Error( 'WebUploader does not support the browser you are using.' );
             }
+            config.compress == undefined && config.compress = {};
+
             // 实例化
             uploader = WebUploader.create({
                 pick: {
@@ -70,7 +72,17 @@ jQuery(function() {
                 chunked: config.chunked,
                 fileNumLimit: config.pick.multiple ? 30 : config.fileNumLimit,
                 fileSizeLimit: config.fileSizeLimit,
-                fileSingleSizeLimit: config.fileSingleSizeLimit
+                fileSingleSizeLimit: config.fileSingleSizeLimit,
+                compress: {
+                    width: config.compress.width,
+                    height: config.compress.height,
+                    quality: config.compress.quality,
+                    allowMagnify: config.compress.allowMagnify,
+                    crop: config.compress.crop,
+                    preserveHeaders: config.compress.preserveHeaders,
+                    noCompressIfLarger: config.compress.noCompressIfLarger,
+                    compressSize: config.compress.compressSize
+                }
             });
 
             // 添加“添加文件”的按钮，
@@ -459,7 +471,7 @@ jQuery(function() {
             _modal.find('.modal-body').html('');
             _modal.find('.modal-body').html(buildModalBody());
         });
-        $('.delImage').on('click', function () {
+        $(document).on('click', '.delImage', function () {
             var _this = $(this);
             _this.prev().attr("src", config.defaultImage);
             _this.parent().prev().find("input").val("");
