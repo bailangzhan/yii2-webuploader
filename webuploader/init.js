@@ -72,7 +72,7 @@ jQuery(function() {
                 formData: config.formData,
                 disableGlobalDnd: config.disableGlobalDnd,
                 chunked: config.chunked,
-                fileNumLimit: config.pick.multiple ? 30 : config.fileNumLimit,
+                fileNumLimit: config.pick.multiple ? config.fileNumLimit : 1,
                 fileSizeLimit: config.fileSizeLimit,
                 fileSingleSizeLimit: config.fileSingleSizeLimit,
                 compress: {
